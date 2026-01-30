@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="PointWorld: Scaling 3D world models for in-the-wild robotic manipulation." name="description"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>PointWorld | Scaling 3D World Models for In-The-Wild Robotic Manipulation</title>
+<meta content="PointWorld: Scaling 3D World Models for In-The-Wild Robotic Manipulation" property="og:title"/>
+<meta content="PointWorld: Scaling 3D world models for in-the-wild robotic manipulation." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="media/preview-card-1080p.jpg" property="og:image"/>
+<meta content="1920" property="og:image:width"/>
+<meta content="1080" property="og:image:height"/>
+<meta content="image/jpeg" property="og:image:type"/>
+<meta content="PointWorld project preview card" property="og:image:alt"/>
+<meta content="media/preview-card-180p.jpg" property="og:image"/>
+<meta content="320" property="og:image:width"/>
+<meta content="180" property="og:image:height"/>
+<meta content="image/jpeg" property="og:image:type"/>
+<meta content="PointWorld project preview card" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="PointWorld: Scaling 3D World Models for In-The-Wild Robotic Manipulation" name="twitter:title"/>
+<meta content="PointWorld: Scaling 3D world models for in-the-wild robotic manipulation." name="twitter:description"/>
+<meta content="media/preview-card-1080p.jpg" name="twitter:image"/>
+<meta content="PointWorld project preview card" name="twitter:image:alt"/>
+<link href="media/preview-card-180p.jpg" rel="icon" type="image/jpeg"/>
+<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet"/>
+<link href="./static/css/bulma.min.css" rel="stylesheet"/>
+<link href="./static/css/bulma-carousel.min.css" rel="stylesheet"/>
+<link href="./static/css/bulma-slider.min.css" rel="stylesheet"/>
+<link href="./static/css/fontawesome.all.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" rel="stylesheet"/>
+<link href="./static/css/index.css" rel="stylesheet"/>
+<link href="./static/source_serif_4.css" rel="stylesheet"/>
+<link href="./static/source_sans_3.css" rel="stylesheet"/>
+<link href="./static/academicons.min.css" rel="stylesheet"/>
+<link href="./static/fontawesome/css/fontawesome.css" rel="stylesheet"/>
+<link href="./static/fontawesome/css/brands.css" rel="stylesheet"/>
+<link href="./static/fontawesome/css/light.css" rel="stylesheet"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script defer="" src="./static/js/fontawesome.all.min.js"></script>
+<script src="./static/js/bulma-carousel.min.js"></script>
+<script src="./static/js/bulma-slider.min.js"></script>
+<script src="./static/js/index.js"></script>
+</head>
+<body>
+<section class="hero">
+<div class="hero-body">
+<div class="container is-fullhd">
+<div class="columns is-centered">
+<div class="column is-10 has-text-centered">
+<h1 class="title is-1 publication-title">PointWorld: Scaling 3D World Models<br/>for In-The-Wild Robotic Manipulation</h1>
+<div class="is-size-5 publication-authors">
+<span class="author-block">Anonymous Authors</span>
+</div>
+<div class="is-size-5 affiliation">
+Anonymous Affiliation
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section teaser-section">
+<div class="container is-max-widescreen">
+<figure class="image teaser-image">
+<video autoplay muted loop playsinline controls preload="metadata" poster="media/preview-card-180p.jpg" aria-label="PointWorld teaser">
+<source src="media/teaser-720p.mp4" type="video/mp4"/>
+</video>
+</figure>
+<h2 class="subtitle has-text-centered teaser-caption" style="--teaser-caption-size: 1.0rem; --teaser-caption-line-height: 1.55;">
+      PointWorld is a large pre-trained 3D world model that predicts full-scene 3D point flow from partially observable RGB-D captures and robot actions (represented as 3D point flow).
+    </h2>
+</div>
+</section>
+<section class="section" id="abstract">
+<div class="container is-max-desktop">
+<div class="columns is-centered has-text-left">
+<div class="column">
+<h2 class="title is-3 has-text-centered">Abstract</h2>
+<div class="content has-text-justified">
+<p>
+  Humans anticipate, from a glance and a contemplated action of their bodies, how the 3D world will respond, a capability that is equally vital for robotic manipulation. We introduce PointWorld, a large pre-trained 3D world model that unifies state and action in a shared 3D space as 3D point flows: given one or few RGB-D images and a sequence of low-level robot action commands, PointWorld forecasts per-pixel displacements in 3D that respond to the given actions. By representing actions as 3D point flows instead of embodiment-specific action spaces (e.g., joint positions), this formulation directly conditions on physical geometries of robots while seamlessly integrating learning across embodiments. To train our 3D world model, we curate a large-scale dataset spanning real and simulated robotic manipulation in open-world environments, enabled by recent advances in 3D vision and simulated environments, totaling about 2M trajectories and 500 hours across a single-arm Franka and a bimanual humanoid. Through rigorous, large-scale empirical studies of backbones, action representations, learning objectives, partial observability, data mixtures, domain transfers, and scaling, we distill design principles for large-scale 3D world modeling. With a real-time (0.1s) inference speed, PointWorld can be efficiently integrated in the model-predictive control (MPC) framework for manipulation. We demonstrate that a single pre-trained checkpoint enables a real-world Franka robot to perform rigid-body pushing, deformable and articulated object manipulation, and tool use, without requiring any demonstrations or post-training and all from a single image captured in-the-wild.
+  </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section" id="interactive-results">
+<div class="container is-max-widescreen">
+<h2 class="title is-3 has-text-centered">Interactive Results</h2>
+<div class="interactive-instructions">
+<div class="interactive-instructions-body">
+<p>
+          Pick a scene below to view its RGB-D observations along with model predictions and corresponding ground-truth (played at 1/8× speed for clarity). All samples are unseen during training.
+        </p>
+<ul>
+<li><strong>Single Checkpoint:</strong> All predictions come from a single pre-trained PointWorld model.</li>
+<li><strong>Inputs:</strong> Static Calibrated RGB-D Captures (t=0), <span class="interactive-highlight-magenta">Robot Point Flow</span> (t=0...T).</li>
+<li><strong>Outputs:</strong> <span class="interactive-highlight-rainbow">Full-Scene 3D Point Flow</span> (t=0...T) over the 1 m × 1 m × 1 m workspace in front of the robot.</li>
+</ul>
+<div class="interactive-row" id="interactive-row-droid">
+<div class="interactive-left-label">DROID (real)</div>
+<div class="interactive-right">
+<div aria-label="DROID interactive scenes" class="interactive-carousel" id="interactive-carousel-droid" role="region">
+<button aria-label="Previous interactive sample" class="interactive-arrow" data-direction="prev" type="button">‹</button>
+<div aria-label="DROID scenes" class="interactive-thumbs" id="interactive-thumb-row-droid" role="tablist">
+<button aria-label="scene-01" aria-pressed="false" class="interactive-thumb" data-base="interactive/droid-scenes/scene-01" data-camera-lookat="0.00,-0.10,0.00" data-camera-position="0.45,0.00,0.45" data-camera-up="0.000,0.000,1.000" data-label="scene-01" type="button">
+<img alt="scene-01 thumbnail" src="interactive/droid-scenes/scene-01/cameras-rgb/cam0.png"/>
+</button>
+<button aria-label="scene-06" aria-pressed="false" class="interactive-thumb" data-base="interactive/droid-scenes/scene-06" data-camera-lookat="0.00,0.00,0.00" data-camera-position="0.0,0.7,0.00" data-camera-up="0.000,0.000,1.000" data-label="scene-06" type="button">
+<img alt="scene-06 thumbnail" src="interactive/droid-scenes/scene-06/cameras-rgb/cam0.png"/>
+</button>
+<button aria-label="scene-02" aria-pressed="false" class="interactive-thumb" data-base="interactive/droid-scenes/scene-02" data-camera-lookat="0.00,0.00,0.00" data-camera-position="0.6,0.00,0.6" data-camera-up="0.000,0.000,1.000" data-label="scene-02" type="button">
+<img alt="scene-02 thumbnail" src="interactive/droid-scenes/scene-02/cameras-rgb/cam0.png"/>
+</button>
+<button aria-label="scene-03" aria-pressed="false" class="interactive-thumb" data-base="interactive/droid-scenes/scene-03" data-camera-lookat="0.00,0.00,0.00" data-camera-position="-0.6,-0.5,0.6" data-camera-up="0.000,0.000,1.000" data-label="scene-03" type="button">
+<img alt="scene-03 thumbnail" src="interactive/droid-scenes/scene-03/cameras-rgb/cam0.png"/>
+</button>
+<button aria-label="scene-04" aria-pressed="false" class="interactive-thumb" data-base="interactive/droid-scenes/scene-04" data-camera-lookat="0.00,0.00,0.00" data-camera-position="0.6,0.00,0.6" data-camera-up="0.000,0.000,1.000" data-label="scene-04" type="button">
+<img alt="scene-04 thumbnail" src="interactive/droid-scenes/scene-04/cameras-rgb/cam0.png"/>
+</button>
+<button aria-label="scene-05" aria-pressed="false" class="interactive-thumb" data-base="interactive/droid-scenes/scene-05" data-camera-lookat="0.00,0.00,0.00" data-camera-position="-0.7,0.60,-0.2" data-camera-up="0.000,0.000,1.000" data-label="scene-05" type="button">
+<img alt="scene-05 thumbnail" src="interactive/droid-scenes/scene-05/cameras-rgb/cam0.png"/>
+</button>
+<button aria-label="scene-07" aria-pressed="false" class="interactive-thumb" data-base="interactive/droid-scenes/scene-07" data-camera-lookat="0.00,0.00,0.00" data-camera-position="-0.35,-0.25,0.22" data-camera-up="0.000,0.000,1.000" data-label="scene-07" type="button">
+<img alt="scene-07 thumbnail" src="interactive/droid-scenes/scene-07/cameras-rgb/cam0.png"/>
+</button>
+<button aria-label="scene-08" aria-pressed="false" class="interactive-thumb" data-base="interactive/droid-scenes/scene-08" data-camera-lookat="0.00,0.00,0.00" data-camera-position="-0.4,0.25,0.45" data-camera-up="0.000,0.000,1.000" data-label="scene-08" type="button">
+<img alt="scene-08 thumbnail" src="interactive/droid-scenes/scene-08/cameras-rgb/cam0.png"/>
+</button>
+<button aria-label="scene-09" aria-pressed="false" class="interactive-thumb" data-base="interactive/droid-scenes/scene-09" data-camera-lookat="0.00,0.00,0.00" data-camera-position="0.35,0.5,0.3" data-camera-up="0.000,0.000,1.000" data-label="scene-09" type="button">
+<img alt="scene-09 thumbnail" src="interactive/droid-scenes/scene-09/cameras-rgb/cam0.png"/>
+</button>
+</div>
+<button aria-label="Next interactive sample" class="interactive-arrow" data-direction="next" type="button">›</button>
+</div>
+<div aria-label="DROID scene indicators" class="interactive-pagination" id="interactive-dots-droid"></div>
+</div>
+</div>
+<div class="interactive-row" id="interactive-row-b1k">
+<div class="interactive-left-label">BEHAVIOR (simulated)</div>
+<div class="interactive-right">
+<div aria-label="BEHAVIOR interactive scenes" class="interactive-carousel" id="interactive-carousel-b1k" role="region">
+<button aria-label="Previous interactive sample" class="interactive-arrow" data-direction="prev" type="button">‹</button>
+<div aria-label="BEHAVIOR scenes" class="interactive-thumbs" id="interactive-thumb-row-b1k" role="tablist">
+<button aria-label="b1k sample 0016-1895" aria-pressed="false" class="interactive-thumb" data-base="interactive/b1k-scenes/task-0016_episode_00160540-1895_1906" data-camera-lookat="0.00,0.00,0.00" data-camera-position="0.65,0.6,0.2" data-camera-up="0.000,0.000,1.000" data-label="progress-pretrain-b1k_2025-09-03_22-01-51-test-b1k+test-task-0016_episode_00160540-1895_1906" type="button">
+<img alt="b1k 0016-1895 thumbnail" src="interactive/b1k-scenes/task-0016_episode_00160540-1895_1906/cameras-rgb/cam0.png"/>
+</button>
+<button aria-label="b1k sample 0029-2890" aria-pressed="false" class="interactive-thumb" data-base="interactive/b1k-scenes/task-0029_episode_00292010-2890_2901" data-camera-lookat="0.00,0.10,0.35" data-camera-position="-0.3,0.40,0.4" data-camera-up="0.000,0.000,1.000" data-label="progress-pretrain-b1k_2025-09-03_22-01-51-test-b1k+test-task-0029_episode_00292010-2890_2901" type="button">
+<img alt="b1k 0029-2890 thumbnail" src="interactive/b1k-scenes/task-0029_episode_00292010-2890_2901/cameras-rgb/cam0.png"/>
+</button>
+<button aria-label="b1k sample 0024-0225" aria-pressed="false" class="interactive-thumb" data-base="interactive/b1k-scenes/task-0024_episode_00242930-225_236" data-camera-lookat="0.00,0.00,0.00" data-camera-position="-0.3,1.2,0.8" data-camera-up="0.000,0.000,1.000" data-label="progress-pretrain-b1k_2025-09-03_22-01-51-test-b1k+test-task-0024_episode_00242930-225_236" type="button">
+<img alt="b1k 0024-0225 thumbnail" src="interactive/b1k-scenes/task-0024_episode_00242930-225_236/cameras-rgb/cam2.png"/>
+</button>
+<button aria-label="b1k sample 0020-0760" aria-pressed="false" class="interactive-thumb" data-base="interactive/b1k-scenes/task-0020_episode_00201550-760_771" data-camera-lookat="0.00,-0.0,0.2" data-camera-position="-0.25,0.00,1.0" data-camera-up="0.000,0.000,1.000" data-label="progress-pretrain-b1k_2025-09-03_22-01-51-test-b1k+test-task-0020_episode_00201550-760_771" type="button">
+<img alt="b1k 0020-0760 thumbnail" src="interactive/b1k-scenes/task-0020_episode_00201550-760_771/cameras-rgb/cam0.png"/>
+</button>
+<button aria-label="b1k sample 0025-0640" aria-pressed="false" class="interactive-thumb" data-base="interactive/b1k-scenes/task-0025_episode_00252890-640_651" data-camera-lookat="0.00,0.00,0.30" data-camera-position="0.6,0.00,0.5" data-camera-up="0.000,0.000,1.000" data-label="progress-pretrain-b1k_2025-09-03_22-01-51-test-b1k+test-task-0025_episode_00252890-640_651" type="button">
+<img alt="b1k 0025-0640 thumbnail" src="interactive/b1k-scenes/task-0025_episode_00252890-640_651/cameras-rgb/cam0.png"/>
+</button>
+<button aria-label="b1k sample 0006" aria-pressed="false" class="interactive-thumb" data-base="interactive/b1k-scenes/task-0006_episode_00060540-360_371" data-camera-lookat="0.00,0.00,0.50" data-camera-position="0.00,1.3,1.30" data-camera-up="0.000,0.000,1.000" data-label="progress-pretrain-b1k_2025-09-03_22-01-51-test-b1k+test-task-0006_episode_00060540-360_371" type="button">
+<img alt="b1k 0006 thumbnail" src="interactive/b1k-scenes/task-0006_episode_00060540-360_371/cameras-rgb/cam0.png"/>
+</button>
+<button aria-label="b1k sample 0011-1230" aria-pressed="false" class="interactive-thumb" data-base="interactive/b1k-scenes/task-0011_episode_00111880-1230_1241" data-camera-lookat="0.00,0.00,0.85" data-camera-position="-0.45,0.50,1.40" data-camera-up="0.000,0.000,1.000" data-label="progress-pretrain-b1k_2025-09-03_22-01-51-test-b1k+test-task-0011_episode_00111880-1230_1241" type="button">
+<img alt="b1k 0011-1230 thumbnail" src="interactive/b1k-scenes/task-0011_episode_00111880-1230_1241/cameras-rgb/cam0.png"/>
+</button>
+<button aria-label="b1k sample 0013-3165" aria-pressed="false" class="interactive-thumb" data-base="interactive/b1k-scenes/task-0013_episode_00131780-3165_3176" data-camera-lookat="0.00,0.00,0.7" data-camera-position="1.0,1.0,1.30" data-camera-up="0.000,0.000,1.000" data-label="progress-pretrain-b1k_2025-09-03_22-01-51-test-b1k+test-task-0013_episode_00131780-3165_3176" type="button">
+<img alt="b1k 0013-3165 thumbnail" src="interactive/b1k-scenes/task-0013_episode_00131780-3165_3176/cameras-rgb/cam1.png"/>
+</button>
+<button aria-label="b1k sample 0024-3165" aria-pressed="false" class="interactive-thumb" data-base="interactive/b1k-scenes/task-0024_episode_00240270-3165_3176" data-camera-lookat="0.00,0.00,0.4" data-camera-position="-0.75,-0.50,0.4" data-camera-up="0.000,0.000,1.000" data-label="progress-pretrain-b1k_2025-09-03_22-01-51-test-b1k+test-task-0024_episode_00240270-3165_3176" type="button">
+<img alt="b1k 0024-3165 thumbnail" src="interactive/b1k-scenes/task-0024_episode_00240270-3165_3176/cameras-rgb/cam0.png"/>
+</button>
+</div>
+<button aria-label="Next interactive sample" class="interactive-arrow" data-direction="next" type="button">›</button>
+</div>
+<div aria-label="BEHAVIOR scene indicators" class="interactive-pagination" id="interactive-dots-b1k"></div>
+</div>
+</div>
+<p class="interactive-note"><strong>NOTE:</strong> The model operates on voxel-downsampled (1.5 cm) point clouds. For visual clarity, we upsample the predictions and and the ground truth by applying the same displacement to all points within each voxel. The green color in ground truth visualization indicate the points that are inaccurate due to occlusion (from 2D trackers used to provide annotations). Note that these points are not used to supervise the model, hence it's often observed that the model predicts better than the ground truth for occluded point flows after training.</p>
+</div>
+</div>
+<div class="interactive-panel" id="interactive-panel">
+<div class="interactive-card interactive-card--inputs" id="interactive-inputs-droid">
+<h3 class="title is-5">Static Calibrated RGB-D Captures (Input) <span aria-hidden="true" class="hint-banner hint-banner--zoom">Hover to zoom</span></h3>
+<div class="interactive-image-grid">
+<figure>
+<img alt="scene-01 RGB cam0" data-role="rgb0" src="interactive/droid-scenes/scene-01/cameras-rgb/cam0.png"/>
+<figcaption>RGB cam0</figcaption>
+</figure>
+<figure>
+<img alt="scene-01 depth cam0" data-role="depth0" src="interactive/droid-scenes/scene-01/cameras-depth/cam0.png"/>
+<figcaption>Depth cam0</figcaption>
+</figure>
+<figure>
+<img alt="scene-01 RGB cam1" data-role="rgb1" src="interactive/droid-scenes/scene-01/cameras-rgb/cam1.png"/>
+<figcaption>RGB cam1</figcaption>
+</figure>
+<figure>
+<img alt="scene-01 depth cam1" data-role="depth1" src="interactive/droid-scenes/scene-01/cameras-depth/cam1.png"/>
+<figcaption>Depth cam1</figcaption>
+</figure>
+</div>
+</div>
+<div class="interactive-card interactive-card--inputs is-hidden" id="interactive-inputs-b1k">
+<h3 class="title is-5">Static Calibrated RGB-D Captures (Input) <span aria-hidden="true" class="hint-banner hint-banner--zoom">Hover to zoom</span></h3>
+<div class="interactive-image-grid interactive-image-grid--b1k">
+<figure>
+<img alt="b1k RGB cam0" data-role="rgb0" src="interactive/b1k-scenes/task-0016_episode_00160540-1895_1906/cameras-rgb/cam0.png"/>
+<figcaption>RGB cam0</figcaption>
+</figure>
+<figure>
+<img alt="b1k RGB cam1" data-role="rgb1" src="interactive/b1k-scenes/task-0016_episode_00160540-1895_1906/cameras-rgb/cam1.png"/>
+<figcaption>RGB cam1</figcaption>
+</figure>
+<figure>
+<img alt="b1k RGB cam2" data-role="rgb2" src="interactive/b1k-scenes/task-0016_episode_00160540-1895_1906/cameras-rgb/cam2.png"/>
+<figcaption>RGB cam2</figcaption>
+</figure>
+<figure>
+<img alt="b1k depth cam0" data-role="depth0" src="interactive/b1k-scenes/task-0016_episode_00160540-1895_1906/cameras-depth/cam0.png"/>
+<figcaption>Depth cam0</figcaption>
+</figure>
+<figure>
+<img alt="b1k depth cam1" data-role="depth1" src="interactive/b1k-scenes/task-0016_episode_00160540-1895_1906/cameras-depth/cam1.png"/>
+<figcaption>Depth cam1</figcaption>
+</figure>
+<figure>
+<img alt="b1k depth cam2" data-role="depth2" src="interactive/b1k-scenes/task-0016_episode_00160540-1895_1906/cameras-depth/cam2.png"/>
+<figcaption>Depth cam2</figcaption>
+</figure>
+</div>
+</div>
+<div class="interactive-card interactive-card--viewer">
+<h3 class="title is-5"><span class="interactive-highlight-rainbow">Full-Scene 3D Point Flow</span> Prediction (conditioned on <span class="interactive-highlight-magenta">Robot Point Flow</span>) <span aria-hidden="true" class="hint-banner hint-banner--move is-hidden" data-viser-hint="interactive-pred">Click and move me</span></h3>
+<div class="interactive-viewer">
+<div aria-hidden="true" class="viser-banner viser-banner--interactive is-placeholder">choose a scene above to view interactive visualization</div>
+<iframe allow="fullscreen xr-spatial-tracking" class="interactive-iframe" id="interactive-pred" loading="lazy" title="PointWorld prediction viewer (click and move me)"></iframe>
+</div>
+</div>
+<div class="interactive-card interactive-card--viewer">
+<h3 class="title is-5">Ground Truth Reference <span aria-hidden="true" class="hint-banner hint-banner--move is-hidden" data-viser-hint="interactive-gt">Click and move me</span></h3>
+<div class="interactive-viewer">
+<div aria-hidden="true" class="viser-banner viser-banner--interactive is-placeholder">choose a scene above to view interactive visualization</div>
+<iframe allow="fullscreen xr-spatial-tracking" class="interactive-iframe" id="interactive-gt" loading="lazy" title="Ground truth viewer (click and move me)"></iframe>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section dataset-section" id="dataset">
+<div class="container is-max-widescreen">
+<h2 class="title is-3 has-text-centered">Custom 3D Annotations of <a class="dataset-link" href="https://droid-dataset.github.io/" rel="noopener" target="_blank">Real-World Robotics Dataset</a></h2>
+<p class="dataset-intro">To scale up 3D world modeling, we built a custom annotation pipeline with recent advances in 3D computer vision—<a href="https://nvlabs.github.io/FoundationStereo/" rel="noopener" target="_blank">Foundation Stereo</a>, <a href="https://vgg-t.github.io/" rel="noopener" target="_blank">VGGT</a>, and <a href="https://cotracker3.github.io/" rel="noopener" target="_blank">Co-Tracker3</a>—to recover high-fidelity metric depth and camera poses aligned to the robot base (shown as a transparent overlay in each visualization). The same pipeline can be applied to other datasets so long as time-aligned stereo RGB, robot joint configurations, and sufficient robot visibility are recorded. Both code and annotations will be open-sourced.</p>
+<p class="dataset-intro">Across DROID we annotate roughly 42K episodes (all cameras in each episode), yielding about 400K unique 1-second dense flow trajectories for both scene and robot. This results in the largest real-world dataset for 3D dynamics learning to the best of our knowledge. Below we visualize our annotations alongside the annotations from DROID, which rely on sensor depth and <a href="https://huggingface.co/KarlP/droid/blob/main/cam2base_extrinsic_superset.json" rel="noopener" target="_blank">post-processed extrinsics</a>.</p>
+<div class="dataset-carousel">
+<button aria-label="Previous dataset sample" class="dataset-arrow" data-direction="prev" type="button">‹</button>
+<div aria-label="Dataset samples" class="dataset-thumbs" id="dataset-thumb-row" role="tablist">
+<button aria-label="Dataset sample 13" aria-pressed="false" class="dataset-thumb" data-base="annotations/REAL+de601749+2023-12-19-18h-10m-31s_particles-60_71" data-camera-lookat="0.65,0.00,0.00" data-camera-position="0.45,0.80,0.85" data-camera-up="0.000,0.000,1.000" data-label="Dataset 13" type="button">
+<img alt="Dataset sample 13 thumbnail" src="annotations/REAL+de601749+2023-12-19-18h-10m-31s_particles-60_71/rgb/cam0.png"/>
+</button>
+<button aria-label="Dataset sample 14" aria-pressed="false" class="dataset-thumb" data-base="annotations/RPL+32cba90c+2023-12-07-18h-42m-10s_particles-80_91" data-camera-lookat="0.5,0.00,0.00" data-camera-position="0.8,0.8,0.30" data-camera-up="0.000,0.000,1.000" data-label="Dataset 14" type="button">
+<img alt="Dataset sample 14 thumbnail" src="annotations/RPL+32cba90c+2023-12-07-18h-42m-10s_particles-80_91/rgb/cam0.png"/>
+</button>
+<button aria-label="Dataset sample 10" aria-pressed="false" class="dataset-thumb" data-base="annotations/IRIS+7dfa2da3+2023-05-15-16h-20m-25s_particles-40_51" data-camera-lookat="0.65,0.00,0.00" data-camera-position="0.80,0.70,0.85" data-camera-up="0.000,0.000,1.000" data-label="Dataset 10" type="button">
+<img alt="Dataset sample 10 thumbnail" src="annotations/IRIS+7dfa2da3+2023-05-15-16h-20m-25s_particles-40_51/rgb/cam0.png"/>
+</button>
+<button aria-label="Dataset sample 8" aria-pressed="false" class="dataset-thumb" data-base="annotations/IPRL+w026bb9b+2023-09-23-00h-02m-44s_particles-75_86" data-camera-lookat="0.65,0.00,0.00" data-camera-position="0.5,0.7,0.85" data-camera-up="0.000,0.000,1.000" data-label="Dataset 8" type="button">
+<img alt="Dataset sample 8 thumbnail" src="annotations/IPRL+w026bb9b+2023-09-23-00h-02m-44s_particles-75_86/rgb/cam0.png"/>
+</button>
+<button aria-label="Dataset sample 1" aria-pressed="false" class="dataset-thumb" data-base="annotations/AUTOLab+7cb094d5+2023-12-15-16h-05m-45s_particles-35_46" data-camera-lookat="0.52,0.00,0.00" data-camera-position="0.4,0.6,0.7" data-camera-up="0.000,0.000,1.000" data-label="Dataset 1" type="button">
+<img alt="Dataset sample 1 thumbnail" src="annotations/AUTOLab+7cb094d5+2023-12-15-16h-05m-45s_particles-35_46/rgb/cam0.png"/>
+</button>
+<button aria-label="Dataset sample 5" aria-pressed="false" class="dataset-thumb" data-base="annotations/IPRL+2fe9715d+2023-08-22-21h-11m-51s_particles-65_76" data-camera-lookat="0.65,0.00,0.00" data-camera-position="0.60,0.80,0.7" data-camera-up="0.000,0.000,1.000" data-label="Dataset 5" type="button">
+<img alt="Dataset sample 5 thumbnail" src="annotations/IPRL+2fe9715d+2023-08-22-21h-11m-51s_particles-65_76/rgb/cam0.png"/>
+</button>
+<button aria-label="Dataset sample 6" aria-pressed="false" class="dataset-thumb" data-base="annotations/IPRL+7790ec0a+2023-06-30-22h-07m-00s_particles-55_66" data-camera-lookat="0.65,0.00,0.00" data-camera-position="0.60,0.80,0.85" data-camera-up="0.000,0.000,1.000" data-label="Dataset 6" type="button">
+<img alt="Dataset sample 6 thumbnail" src="annotations/IPRL+7790ec0a+2023-06-30-22h-07m-00s_particles-55_66/rgb/cam0.png"/>
+</button>
+<button aria-label="Dataset sample 3" aria-pressed="false" class="dataset-thumb" data-base="annotations/AUTOLab+9aed6d7a+2023-11-30-15h-01m-08s_particles-85_96" data-camera-lookat="0.65,0.00,0.00" data-camera-position="-0.2,0.0,1.0" data-camera-up="0.000,0.000,1.000" data-label="Dataset 3" type="button">
+<img alt="Dataset sample 3 thumbnail" src="annotations/AUTOLab+9aed6d7a+2023-11-30-15h-01m-08s_particles-85_96/rgb/cam0.png"/>
+</button>
+</div>
+<button aria-label="Next dataset sample" class="dataset-arrow" data-direction="next" type="button">›</button>
+</div>
+<div aria-label="Dataset indicators" class="dataset-pagination" id="dataset-dots"></div>
+<div aria-hidden="true" class="dataset-strip">
+<span class="dataset-strip-label dataset-strip-label--ours">Ours</span>
+<span class="dataset-strip-label dataset-strip-label--original">Original</span>
+</div>
+<div class="dataset-grid">
+<div class="dataset-block dataset-block--inputs dataset-block--ours">
+<h3 class="title is-5">Calibrated RGB + Depth <span aria-hidden="true" class="hint-banner hint-banner--zoom">Hover to zoom</span></h3>
+<div class="dataset-image-grid">
+<figure>
+<img alt="Dataset sample 1 ours RGB cam0" data-dataset-role="ours-rgb-0" src="annotations/AUTOLab+7cb094d5+2023-12-15-16h-05m-45s_particles-35_46/fs-refined/rgb_robot/cam0.png"/>
+<figcaption>RGB cam0</figcaption>
+</figure>
+<figure>
+<img alt="Dataset sample 1 ours depth cam0" data-dataset-role="ours-depth-0" src="annotations/AUTOLab+7cb094d5+2023-12-15-16h-05m-45s_particles-35_46/fs-refined/depth/cam0.png"/>
+<figcaption>Depth cam0</figcaption>
+</figure>
+<figure>
+<img alt="Dataset sample 1 ours RGB cam1" data-dataset-role="ours-rgb-1" src="annotations/AUTOLab+7cb094d5+2023-12-15-16h-05m-45s_particles-35_46/fs-refined/rgb_robot/cam1.png"/>
+<figcaption>RGB cam1</figcaption>
+</figure>
+<figure>
+<img alt="Dataset sample 1 ours depth cam1" data-dataset-role="ours-depth-1" src="annotations/AUTOLab+7cb094d5+2023-12-15-16h-05m-45s_particles-35_46/fs-refined/depth/cam1.png"/>
+<figcaption>Depth cam1</figcaption>
+</figure>
+</div>
+</div>
+<div class="dataset-block dataset-block--inputs dataset-block--original">
+<h3 class="title is-5">Calibrated RGB + Depth <span aria-hidden="true" class="hint-banner hint-banner--zoom">Hover to zoom</span></h3>
+<div class="dataset-image-grid">
+<figure>
+<img alt="Dataset sample 1 original RGB cam0" data-dataset-role="original-rgb-0" src="annotations/AUTOLab+7cb094d5+2023-12-15-16h-05m-45s_particles-35_46/raw-tri/rgb_robot/cam0.png"/>
+<figcaption>RGB cam0</figcaption>
+</figure>
+<figure>
+<img alt="Dataset sample 1 original depth cam0" data-dataset-role="original-depth-0" src="annotations/AUTOLab+7cb094d5+2023-12-15-16h-05m-45s_particles-35_46/raw-tri/depth/cam0.png"/>
+<figcaption>Depth cam0</figcaption>
+</figure>
+<figure>
+<img alt="Dataset sample 1 original RGB cam1" data-dataset-role="original-rgb-1" src="annotations/AUTOLab+7cb094d5+2023-12-15-16h-05m-45s_particles-35_46/raw-tri/rgb_robot/cam1.png"/>
+<figcaption>RGB cam1</figcaption>
+</figure>
+<figure>
+<img alt="Dataset sample 1 original depth cam1" data-dataset-role="original-depth-1" src="annotations/AUTOLab+7cb094d5+2023-12-15-16h-05m-45s_particles-35_46/raw-tri/depth/cam1.png"/>
+<figcaption>Depth cam1</figcaption>
+</figure>
+</div>
+</div>
+<div class="dataset-block dataset-block--viewer dataset-block--ours">
+<h3 class="title is-5">Interactive Visualization <span aria-hidden="true" class="hint-banner hint-banner--move is-hidden" data-viser-hint="dataset-ours">Click and move me</span></h3>
+<div class="dataset-viewer">
+<div aria-hidden="true" class="viser-banner viser-banner--dataset is-placeholder">choose a scene above to view interactive visualization</div>
+<iframe allow="fullscreen xr-spatial-tracking" class="dataset-iframe" data-base="annotations/AUTOLab+7cb094d5+2023-12-15-16h-05m-45s_particles-35_46" id="dataset-viewer-ours" loading="lazy" title="Dataset sample 1 ours visualization (click and move me)"></iframe>
+</div>
+</div>
+<div class="dataset-block dataset-block--viewer dataset-block--original">
+<h3 class="title is-5">Interactive Visualization <span aria-hidden="true" class="hint-banner hint-banner--move is-hidden" data-viser-hint="dataset-original">Click and move me</span></h3>
+<div class="dataset-viewer">
+<div aria-hidden="true" class="viser-banner viser-banner--dataset is-placeholder">choose a scene above to view interactive visualization</div>
+<iframe allow="fullscreen xr-spatial-tracking" class="dataset-iframe" data-base="annotations/AUTOLab+7cb094d5+2023-12-15-16h-05m-45s_particles-35_46" id="dataset-viewer-original" loading="lazy" title="Dataset sample 1 original visualization (click and move me)"></iframe>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section" id="experiments">
+<div class="container is-max-widescreen">
+<h2 class="title is-3 has-text-centered">Real-World Experiments</h2>
+<p class="content has-text-justified">
+      Integrated within a model-predictive control framework, a single pretrained PointWorld model enables diverse manipulation skills without task-specific data or training.
+    </p>
+<div class="columns is-multiline">
+<div class="column is-half">
+<div class="box experiment-card has-text-centered">
+<h3 class="title is-5">Non-Prehensile Pushing</h3>
+<video autoplay="" class="experiment-video" controls="" loop="" muted="" playsinline="">
+<source src="media/videos/book.mp4" type="video/mp4"/>
+</video>
+<video autoplay="" class="experiment-video" controls="" loop="" muted="" playsinline="">
+<source src="media/videos/tissuebox.mp4" type="video/mp4"/>
+</video>
+</div>
+</div>
+<div class="column is-half">
+<div class="box experiment-card has-text-centered">
+<h3 class="title is-5">Deformable Manipulation</h3>
+<video autoplay="" class="experiment-video" controls="" loop="" muted="" playsinline="">
+<source src="media/videos/scarf.mp4" type="video/mp4"/>
+</video>
+<video autoplay="" class="experiment-video" controls="" loop="" muted="" playsinline="">
+<source src="media/videos/pillow.mp4" type="video/mp4"/>
+</video>
+</div>
+</div>
+<div class="column is-half">
+<div class="box experiment-card has-text-centered">
+<h3 class="title is-5">Articulated Manipulation</h3>
+<video autoplay="" class="experiment-video" controls="" loop="" muted="" playsinline="">
+<source src="media/videos/drawer.mp4" type="video/mp4"/>
+</video>
+<video autoplay="" class="experiment-video" controls="" loop="" muted="" playsinline="">
+<source src="media/videos/microwave.mp4" type="video/mp4"/>
+</video>
+</div>
+</div>
+<div class="column is-half">
+<div class="box experiment-card has-text-centered">
+<h3 class="title is-5">Tool Use</h3>
+<video autoplay="" class="experiment-video" controls="" loop="" muted="" playsinline="">
+<source src="media/videos/duster.mp4" type="video/mp4"/>
+</video>
+<video autoplay="" class="experiment-video" controls="" loop="" muted="" playsinline="">
+<source src="media/videos/broom.mp4" type="video/mp4"/>
+</video>
+</div>
+</div>
+</div>
+</div>
+</section>
+</body>
+</html>

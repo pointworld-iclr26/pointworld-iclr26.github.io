@@ -1,0 +1,12 @@
+/* PointWorld: dock playback controls below the renderer by reserving space at the bottom. */
+html.pw-viser-playback {
+  --pw-viser-playback-dock-height: clamp(64px, 9vh, 96px);
+}
+
+html.pw-viser-playback canvas {
+  height: calc(100% - var(--pw-viser-playback-dock-height)) !important;
+}
+
+html.pw-viser-playback #root {
+  background: var(--mantine-color-body);
+}

@@ -1,0 +1,7 @@
+anon_push_helper
+unused/*
+!unused/.gitkeep
+
+# Local artifacts / exports
+exported_mp4/
+debug_canvas.png
